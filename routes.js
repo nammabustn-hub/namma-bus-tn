@@ -3,10 +3,8 @@
  NAMMA BUS TN
  Verified Bus Route Directory
 
- IMPORTANT:
- - Only verified bus services should be added.
- - No invented bus numbers or timings.
- - Route data and live tracking are separate.
+ Only verified services will be displayed.
+ No invented buses, timings or live locations.
 */
 
 export const busRoutes = [];
@@ -20,19 +18,21 @@ function normalizeLocation(value) {
     .trim();
 }
 
+function matchesLocation(selectedPlace, routePlace) {
+  const selected = normalizeLocation(selectedPlace);
+  const route = normalizeLocation(routePlace);
+
+  return (
+    selected === route ||
+    selected.startsWith(route + ",")
+  );
+}
+
 export function searchRoutes(from, to) {
-  const start = normalizeLocation(from);
-  const destination = normalizeLocation(to);
+  if (!from || !to) return [];
 
-  if (!start || !destination) return [];
-
-  return busRoutes.filter(route => {
-    const routeFrom = normalizeLocation(route.from);
-    const routeTo = normalizeLocation(route.to);
-
-    return (
-      routeFrom === start &&
-      routeTo === destination
-    );
-  });
+  return busRoutes.filter(route =>
+    matchesLocation(from, route.from) &&
+    matchesLocation(to, route.to)
+  );
 }
