@@ -1,73 +1,22 @@
 
 /*
  NAMMA BUS TN
- Initial route directory
- Source: TNSTC official popular destinations
- Note: These are route listings, NOT live bus timings.
+ Verified Bus Route Directory
+
+ IMPORTANT:
+ - Only verified bus services should be added.
+ - No invented bus numbers or timings.
+ - Route data and live tracking are separate.
 */
 
-export const busRoutes = [
-  {
-    from: "Chennai",
-    to: "Madurai",
-    busName: "TNSTC / SETC",
-    timing: null
-  },
-  {
-    from: "Chennai",
-    to: "Tiruchendur",
-    busName: "TNSTC / SETC",
-    timing: null
-  },
-  {
-    from: "Chennai",
-    to: "Tirunelveli",
-    busName: "TNSTC / SETC",
-    timing: null
-  },
-  {
-    from: "Chennai",
-    to: "Salem",
-    busName: "TNSTC / SETC",
-    timing: null
-  },
-  {
-    from: "Chennai",
-    to: "Tiruppur",
-    busName: "TNSTC / SETC",
-    timing: null
-  },
-  {
-    from: "Chennai",
-    to: "Trichy",
-    busName: "TNSTC / SETC",
-    timing: null
-  },
-  {
-    from: "Chennai",
-    to: "Nagercoil",
-    busName: "TNSTC / SETC",
-    timing: null
-  },
-  {
-    from: "Chennai",
-    to: "Thanjavur",
-    busName: "TNSTC / SETC",
-    timing: null
-  },
-  {
-    from: "Coimbatore",
-    to: "Chennai",
-    busName: "TNSTC / SETC",
-    timing: null
-  }
-];
+export const busRoutes = [];
 
 function normalizeLocation(value) {
   return String(value || "")
     .toLowerCase()
     .replace(/,?\s*tamil nadu/gi, "")
     .replace(/,?\s*india/gi, "")
+    .replace(/\s+/g, " ")
     .trim();
 }
 
@@ -82,8 +31,8 @@ export function searchRoutes(from, to) {
     const routeTo = normalizeLocation(route.to);
 
     return (
-      (routeFrom.includes(start) || start.includes(routeFrom)) &&
-      (routeTo.includes(destination) || destination.includes(routeTo))
+      routeFrom === start &&
+      routeTo === destination
     );
   });
 }
