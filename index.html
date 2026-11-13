@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#075E54">
+  <title>Namma Bus TN</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f4;
+      color: #172b28;
+    }
+    header {
+      background: #075e54;
+      color: white;
+      padding: 24px 20px;
+      border-radius: 0 0 22px 22px;
+    }
+    header h1 { margin: 0; font-size: 27px; }
+    header p { margin-bottom: 0; }
+    main { padding: 20px; max-width: 600px; margin: auto; }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 3px 12px #0000000d;
+    }
+    label { display: block; font-weight: bold; margin: 12px 0 7px; }
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccd7d4;
+      border-radius: 9px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 10px;
+      background: #087e70;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 16px;
+    }
+    #results { line-height: 1.6; }
+    .note { color: #687875; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🚌 Namma Bus TN</h1>
+    <p>Tamil Nadu Bus Journey Planner</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Where do you want to go?</h2>
+
+      <label for="from">From</label>
+      <input id="from" placeholder="Enter starting location">
+
+      <label for="to">To</label>
+      <input id="to" placeholder="Enter destination">
+
+      <button onclick="searchBus()">Find Buses</button>
+      <button onclick="getLocation()" style="background:#e6f3f0;color:#075e54">
+        📍 Use My Current Location
+      </button>
+    </div>
+
+    <div class="card" id="results">
+      <h3>Welcome!</h3>
+      <p>Enter your starting point and destination to begin.</p>
+      <p class="note">Demo version – verified bus data is not connected yet.</p>
+    </div>
+  </main>
+
+  <script>
+    function searchBus() {
+      const from = document.getElementById("from").value.trim();
+      const to = document.getElementById("to").value.trim();
+      const results = document.getElementById("results");
+
+      if (!from || !to) {
+        results.innerHTML = "<h3>Enter both locations</h3><p>Please enter From and To.</p>";
+        return;
+      }
+
+      results.innerHTML =
+        "<h3>Journey Search</h3>" +
+        "<p>From: " + escapeText(from) + "</p>" +
+        "<p>To: " + escapeText(to) + "</p>" +
+        "<p>Bus route database will be connected in the next stage.</p>" +
+        "<p class='note'>No verified buses or live timings available yet.</p>";
+    }
+
+    function escapeText(value) {
+      return value.replace(/[&<>"']/g, c => ({
+        "&":"&amp;", "<":"&lt;", ">":"&gt;",
+        '"':"&quot;", "'":"&#39;"
+      }[c]));
+    }
+
+    function getLocation() {
+      if (!navigator.geolocation) {
+        alert("Location is not supported by this browser.");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          document.getElementById("from").value =
+            position.coords.latitude.toFixed(5) + ", " +
+            position.coords.longitude.toFixed(5);
+        },
+        () => alert("Please allow location permission.")
+      );
+    }
+  </script>
+</body>
+</html>
