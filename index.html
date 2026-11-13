@@ -4,403 +4,273 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071713">
-<title>Namma Bus TN | Smart Travel</title>
+<meta name="theme-color" content="#07130f">
+<title>Namma Bus TN | Tamil Nadu Bus Finder</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
-
-:root {
-  --bg:#071713;
-  --panel:#10241e;
-  --green:#a8ffcb;
-  --mint:#57e99b;
-  --text:#f2fff7;
-  --muted:#91a99c;
-  --line:#254337;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:'DM Sans',sans-serif;
+ background:#07130f;color:#f3fff8;
+ min-height:100vh;
+ background-image:radial-gradient(ellipse at top right,#123b2b 0%,transparent 45%);
 }
-
-* { box-sizing:border-box; }
-
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:'DM Sans',Arial,sans-serif;
+header{
+ display:flex;align-items:center;justify-content:space-between;
+ padding:22px 7%;border-bottom:1px solid #1c382b;
 }
-
-.container {
-  width:min(100%,650px);
-  margin:auto;
-  padding:20px;
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+ width:48px;height:48px;border-radius:15px;
+ display:grid;place-items:center;font-size:27px;
+ background:#b8ffcf;color:#062115;
 }
-
-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 0 28px;
+.brand h2{font-size:20px;letter-spacing:1px}
+.brand small{color:#91b5a0;font-size:11px}
+.status{color:#9bffc0;font-size:12px}
+main{max-width:1050px;margin:auto;padding:55px 20px}
+.hero{text-align:center;margin-bottom:35px}
+.tag{
+ display:inline-block;padding:8px 15px;border:1px solid #285a40;
+ border-radius:30px;color:#a9ffc6;font-size:12px;margin-bottom:20px;
 }
-
-.brand {
-  display:flex;
-  align-items:center;
-  gap:11px;
+h1{font-size:clamp(32px,6vw,57px);line-height:1.1}
+h1 span{color:#91ffb2}
+.hero p{color:#9ab3a3;margin-top:15px;font-size:15px}
+.search-card{
+ max-width:760px;margin:35px auto;padding:28px;
+ background:linear-gradient(145deg,#12271d,#0b1a13);
+ border:1px solid #294735;border-radius:25px;
+ box-shadow:0 20px 70px #0005;
 }
-
-.logo {
-  width:45px;
-  height:45px;
-  display:grid;
-  place-items:center;
-  background:var(--green);
-  color:#071713;
-  border-radius:15px;
-  font-size:24px;
+.field{margin-bottom:20px}
+label{display:block;color:#a7c9b3;font-size:13px;margin-bottom:9px}
+input{
+ width:100%;padding:16px;border-radius:13px;
+ border:1px solid #345443;background:#07150e;
+ color:white;font-size:15px;outline:none;
 }
-
-.brand h2 {
-  margin:0;
-  font-size:19px;
-  letter-spacing:-.6px;
+input:focus{border-color:#8dffad}
+button{
+ border:0;cursor:pointer;font-family:inherit;font-weight:700;
 }
-
-.brand small {
-  color:var(--muted);
-  font-size:11px;
+.location-btn{
+ width:100%;padding:13px;margin:0 0 20px;
+ background:#183c29;color:#aaffc4;border:1px solid #376c4b;
+ border-radius:12px;font-size:14px;
 }
-
-.status {
-  color:var(--green);
-  font-size:11px;
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:8px 11px;
+.search-btn{
+ width:100%;padding:17px;background:#a0ffba;
+ color:#062012;border-radius:13px;font-size:16px;
 }
-
-.hero {
-  padding:25px 0 24px;
+.search-btn:active,.location-btn:active{transform:scale(.98)}
+#result{
+ display:none;margin-top:22px;padding:18px;
+ border-radius:14px;background:#10271b;
+ border:1px solid #31563d;color:#c9f5d5;
+ line-height:1.7;font-size:14px;
 }
-
-.tag {
-  color:var(--mint);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:2px;
+.features{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:15px;margin-top:45px;
 }
-
-.hero h1 {
-  font-size:clamp(35px,9vw,53px);
-  line-height:1.08;
-  letter-spacing:-2px;
-  margin:14px 0;
+.feature{
+ padding:23px;border:1px solid #244331;
+ border-radius:18px;background:#0d1e15;
 }
-
-.hero h1 span { color:var(--green); }
-
-.hero p {
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.6;
+.feature .emoji{font-size:26px}
+.feature h3{margin:13px 0 7px;font-size:16px}
+.feature p{font-size:12px;line-height:1.6;color:#91aa9a}
+.notice{
+ margin:25px auto 0;max-width:760px;
+ color:#8da999;font-size:12px;line-height:1.7;text-align:center;
 }
-
-.search-card {
-  background:linear-gradient(145deg,#16382a,#10241e 70%);
-  border:1px solid #315a43;
-  border-radius:25px;
-  padding:21px;
-  box-shadow:0 18px 55px #0005;
-}
-
-.card-heading {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:19px;
-}
-
-.card-heading h3 {
-  margin:0;
-  font-size:18px;
-}
-
-.card-heading span {
-  font-size:11px;
-  color:var(--green);
-}
-
-.field {
-  position:relative;
-  margin:13px 0;
-}
-
-.field label {
-  display:block;
-  font-size:11px;
-  color:var(--muted);
-  margin-bottom:8px;
-}
-
-.field input {
-  width:100%;
-  background:#081a14;
-  border:1px solid var(--line);
-  border-radius:13px;
-  padding:16px 14px;
-  color:white;
-  font-size:15px;
-  outline:none;
-}
-
-.field input:focus {
-  border-color:var(--mint);
-}
-
-.location-btn {
-  width:100%;
-  border:1px solid #416b53;
-  background:#173729;
-  color:var(--green);
-  padding:13px;
-  border-radius:12px;
-  font-size:13px;
-  font-weight:700;
-  margin:5px 0 12px;
-}
-
-.search-btn {
-  width:100%;
-  background:var(--green);
-  color:#071713;
-  border:0;
-  border-radius:14px;
-  padding:17px;
-  font-size:15px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.search-btn:active,.location-btn:active {
-  transform:scale(.98);
-}
-
-.features {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin:24px 0;
-}
-
-.feature {
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:15px 9px;
-  text-align:center;
-}
-
-.feature .emoji { font-size:22px; }
-
-.feature strong {
-  display:block;
-  font-size:11px;
-  margin-top:9px;
-}
-
-.feature small {
-  color:var(--muted);
-  font-size:10px;
-}
-
-.result {
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:18px;
-  margin-top:17px;
-  display:none;
-  line-height:1.7;
-  overflow-wrap:anywhere;
-}
-
-.result h3 { margin-top:0; }
-
-.notice {
-  font-size:12px;
-  color:var(--muted);
-}
-
-footer {
-  text-align:center;
-  color:#779286;
-  font-size:11px;
-  padding:30px 0 15px;
-}
-
-button { cursor:pointer; }
-
-@media(max-width:380px) {
-  .container { padding:15px; }
-  .features { gap:6px; }
+footer{text-align:center;padding:25px;color:#698575;font-size:12px}
+@media(max-width:600px){
+ header{padding:17px 5%}
+ main{padding:42px 16px}
+ .search-card{padding:20px}
+ .features{grid-template-columns:1fr}
+ .status{font-size:10px}
 }
 </style>
 </head>
 
 <body>
-<div class="container">
-
 <header>
-  <div class="brand">
-    <div class="logo">🚌</div>
-    <div>
-      <h2>NAMMA BUS TN</h2>
-      <small>Move smarter. Travel easier.</small>
-    </div>
+ <div class="brand">
+  <div class="logo">🚌</div>
+  <div>
+   <h2>NAMMA BUS TN</h2>
+   <small>YOUR JOURNEY. OUR PRIORITY.</small>
   </div>
-  <div class="status">● TAMIL NADU</div>
+ </div>
+ <div class="status">● Tamil Nadu</div>
 </header>
 
-<section class="hero">
-  <div class="tag">YOUR JOURNEY STARTS HERE</div>
-  <h1>Explore more.<br><span>Travel smarter.</span></h1>
-  <p>Find your bus routes across Tamil Nadu with one simple search.</p>
-</section>
+<main>
+ <section class="hero">
+  <div class="tag">✦ SMART BUS JOURNEY PLANNER</div>
+  <h1>Travel Smart.<br><span>Travel Together.</span></h1>
+  <p>Find your bus journey across Tamil Nadu.</p>
+ </section>
 
-<section class="search-card">
-  <div class="card-heading">
-    <h3>Plan your journey</h3>
-    <span>01 / SEARCH</span>
-  </div>
-
+ <section class="search-card">
   <div class="field">
-    <label>STARTING POINT · FROM</label>
-    <input id="from" placeholder="Enter your starting location">
+   <label>📍 FROM – Starting location</label>
+   <input id="from" placeholder="Enter your starting location">
   </div>
 
-  <button class="location-btn" onclick="getLocation()">
-    ◎ &nbsp; Use my current location
+  <button class="location-btn" onclick="getCurrentLocation()">
+   ◎ Use my current location
   </button>
 
   <div class="field">
-    <label>DESTINATION · TO</label>
-    <input id="to" placeholder="Where do you want to go?">
+   <label>🏁 TO – Destination</label>
+   <input id="to" placeholder="Where do you want to go?">
   </div>
 
-  <button class="search-btn" onclick="searchBus()">
-    Find my buses &nbsp; →
-  </button>
-</section>
+  <button class="search-btn" onclick="searchBus()">Find My Bus →</button>
 
-<div class="result" id="result"></div>
+  <div id="result"></div>
+ </section>
 
-<section class="features">
+ <section class="features">
   <div class="feature">
-    <div class="emoji">📍</div>
-    <strong>Smart Routes</strong>
-    <small>Find journeys</small>
+   <div class="emoji">🗺️</div>
+   <h3>Smart Routes</h3>
+   <p>Find possible routes between your starting point and destination.</p>
   </div>
   <div class="feature">
-    <div class="emoji">⏱️</div>
-    <strong>Bus Timings</strong>
-    <small>Schedule info</small>
+   <div class="emoji">🕒</div>
+   <h3>Bus Timings</h3>
+   <p>View verified bus schedules when route data becomes available.</p>
   </div>
   <div class="feature">
-    <div class="emoji">🛰️</div>
-    <strong>Live Tracking</strong>
-    <small>GPS integration</small>
+   <div class="emoji">📡</div>
+   <h3>Live Tracking</h3>
+   <p>Track buses when authorised live GPS data is connected.</p>
   </div>
-</section>
+ </section>
 
-<footer>
-  Namma Bus TN · Made for Tamil Nadu ❤️
-  <p>Demo version · Verified bus data integration coming soon</p>
-</footer>
+ <p class="notice">
+  Namma Bus TN is an independent project. Bus routes, schedules and live GPS
+  information are not yet connected. We will display verified information
+  when reliable data sources become available.
+ </p>
+</main>
 
-</div>
+<footer>© 2026 NAMMA BUS TN · Made for Tamil Nadu ❤️</footer>
 
 <script>
-async function getLocation() {
-  const input = document.getElementById("from");
-  const result = document.getElementById("result");
+const fromInput = document.getElementById("from");
+const toInput = document.getElementById("to");
+const result = document.getElementById("result");
 
-  if (!navigator.geolocation) {
-    alert("Location is not supported by your browser.");
+function getCurrentLocation() {
+ if (!navigator.geolocation) {
+  alert("Your browser does not support GPS.");
+  return;
+ }
+
+ fromInput.value = "Finding your location...";
+
+ navigator.geolocation.getCurrentPosition(
+  async function(position) {
+   const lat = position.coords.latitude;
+   const lon = position.coords.longitude;
+   const accuracy = position.coords.accuracy;
+
+   if (accuracy > 500) {
+    fromInput.value = "";
+    alert("GPS accuracy is low (" + Math.round(accuracy) +
+     " metres). Move outdoors, enable Google Location Accuracy and try again.");
     return;
-  }
+   }
 
-  input.value = "Finding your location...";
+   try {
+    const url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" +
+     lat + "&lon=" + lon + "&zoom=18&addressdetails=1";
 
-  navigator.geolocation.getCurrentPosition(async position => {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Address lookup failed");
 
-    try {
-      const url =
-        "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" +
-        lat + "&lon=" + lon + "&zoom=16&addressdetails=1";
+    const data = await response.json();
+    const a = data.address || {};
 
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Location lookup failed");
+    const area = a.neighbourhood || a.suburb || a.quarter ||
+     a.residential || a.hamlet || a.village || a.town ||
+     a.city_district || a.city || a.county;
 
-      const data = await response.json();
-      const a = data.address || {};
-
-      const name =
-        a.neighbourhood ||
-        a.suburb ||
-        a.residential ||
-        a.village ||
-        a.town ||
-        a.city_district ||
-        a.city ||
-        a.county;
-
-      input.value = name
-        ? name + (a.city ? ", " + a.city : "")
-        : "Location found – enter area name";
-
-    } catch (error) {
-      input.value = "";
-      alert("Could not find your area name. Please type it manually.");
+    if (!area) {
+     fromInput.value = "";
+     alert("Area name unavailable. Please enter manually.");
+     return;
     }
-  }, error => {
-    input.value = "";
-    alert("Please allow location permission and try again.");
-  }, {
-    enableHighAccuracy:true,
-    timeout:15000,
-    maximumAge:60000
-  });
+
+    const city = a.city || a.town || a.municipality ||
+     a.city_district || a.county;
+
+    fromInput.value = [...new Set([area, city])]
+     .filter(Boolean).join(", ");
+
+    alert("Location detected! GPS accuracy: " +
+     Math.round(accuracy) + " metres.");
+
+   } catch(error) {
+    fromInput.value = "";
+    alert("Unable to get area name. Check internet and try again.");
+   }
+  },
+
+  function(error) {
+   fromInput.value = "";
+   if (error.code === 1) {
+    alert("Location permission denied. Allow location access in Chrome.");
+   } else if (error.code === 3) {
+    alert("GPS timed out. Try again in an open area.");
+   } else {
+    alert("Unable to detect location. Turn on phone GPS and try again.");
+   }
+  },
+
+  {
+   enableHighAccuracy: true,
+   timeout: 25000,
+   maximumAge: 0
+  }
+ );
 }
 
 function searchBus() {
-  const from = document.getElementById("from").value.trim();
-  const to = document.getElementById("to").value.trim();
-  const result = document.getElementById("result");
+ const from = fromInput.value.trim();
+ const to = toInput.value.trim();
 
-  if (!from || !to || from === "Finding your location...") {
-    alert("Please enter both starting point and destination.");
-    return;
-  }
+ if (!from || !to) {
+  alert("Please enter both From and To locations.");
+  return;
+ }
 
-  result.style.display = "block";
-  result.innerHTML =
-    "<h3>🚌 Your journey</h3>" +
-    "<p><b>From:</b> " + escapeHTML(from) + "</p>" +
-    "<p><b>To:</b> " + escapeHTML(to) + "</p>" +
-    "<p class='notice'>Your route search interface is ready. Verified Tamil Nadu bus route and timing data will be connected in the next development stage. Live GPS is not connected yet.</p>";
-
-  result.scrollIntoView({behavior:"smooth",block:"nearest"});
+ result.style.display = "block";
+ result.innerHTML =
+  "<strong>🚌 Your Journey</strong><br>" +
+  "From: " + escapeHTML(from) + "<br>" +
+  "To: " + escapeHTML(to) + "<br><br>" +
+  "Route and verified bus timing data are not connected yet. " +
+  "We are building the Namma Bus TN route database.";
 }
 
 function escapeHTML(value) {
-  return value.replace(/[&<>"']/g, c => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  }[c]));
+ return value.replace(/[&<>"']/g, function(char) {
+  return {
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#039;"
+  }[char];
+ });
 }
 </script>
 </body>
