@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07130f">
-<title>Namma Bus TN - Tamil Nadu Bus Finder</title>
+<title>Namma Bus TN | Tamil Nadu Bus Finder</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -13,97 +13,93 @@
 body{
  font-family:'DM Sans',sans-serif;background:#07130f;color:#f3fff8;
  min-height:100vh;
- background-image:radial-gradient(ellipse at top right,#123b2b,transparent 48%);
+ background-image:radial-gradient(ellipse at top right,#123b2b 0%,transparent 45%);
 }
 header{
- padding:19px 6%;display:flex;justify-content:space-between;
- align-items:center;border-bottom:1px solid #1c382b;
+ display:flex;align-items:center;justify-content:space-between;
+ padding:22px 7%;border-bottom:1px solid #1c382b;
 }
 .brand{display:flex;align-items:center;gap:12px}
 .logo{
- width:47px;height:47px;border-radius:14px;background:#b8ffcf;
+ width:48px;height:48px;border-radius:15px;
  display:grid;place-items:center;font-size:27px;
+ background:#b8ffcf;color:#062115;
 }
-.brand h2{font-size:19px;letter-spacing:1px}
-.brand small{font-size:10px;color:#91b5a0}
-.status{font-size:12px;color:#9bffc0}
-main{max-width:900px;margin:auto;padding:45px 17px}
-.hero{text-align:center;margin-bottom:30px}
+.brand h2{font-size:20px;letter-spacing:1px}
+.brand small{color:#91b5a0;font-size:11px}
+.status{color:#9bffc0;font-size:12px}
+main{max-width:1050px;margin:auto;padding:55px 20px}
+.hero{text-align:center;margin-bottom:35px}
 .tag{
- display:inline-block;border:1px solid #285a40;color:#a9ffc6;
- padding:8px 15px;border-radius:30px;font-size:11px;margin-bottom:18px;
+ display:inline-block;padding:8px 15px;border:1px solid #285a40;
+ border-radius:30px;color:#a9ffc6;font-size:12px;margin-bottom:20px;
 }
-h1{font-size:clamp(34px,7vw,55px);line-height:1.1}
+h1{font-size:clamp(32px,6vw,57px);line-height:1.1}
 h1 span{color:#91ffb2}
-.hero p{color:#9ab3a3;font-size:14px;margin-top:13px}
-.card{
+.hero p{color:#9ab3a3;margin-top:15px;font-size:15px}
+.search-card{
+ max-width:760px;margin:35px auto;padding:28px;
  background:linear-gradient(145deg,#12271d,#0b1a13);
- border:1px solid #294735;border-radius:23px;
- padding:23px;box-shadow:0 20px 70px #0005;
+ border:1px solid #294735;border-radius:25px;
+ box-shadow:0 20px 70px #0005;
 }
-.field{position:relative;margin-bottom:19px}
+.field{position:relative;margin-bottom:20px}
 label{display:block;color:#a7c9b3;font-size:13px;margin-bottom:9px}
 input{
- width:100%;padding:16px 14px;border-radius:12px;
+ width:100%;padding:16px;border-radius:13px;
  border:1px solid #345443;background:#07150e;
  color:white;font-size:15px;outline:none;
 }
 input:focus{border-color:#8dffad}
 input::placeholder{color:#708879}
+button{border:0;cursor:pointer;font-family:inherit;font-weight:700}
 .location-btn{
- width:100%;padding:14px;margin-bottom:15px;
- background:#183c29;color:#aaffc4;
- border:1px solid #376c4b;border-radius:12px;
- font-size:14px;font-weight:700;
+ width:100%;padding:13px;margin:0 0 12px;
+ background:#183c29;color:#aaffc4;border:1px solid #376c4b;
+ border-radius:12px;font-size:14px;
 }
 .search-btn{
  width:100%;padding:17px;background:#a0ffba;
- color:#062012;border:0;border-radius:12px;
- font-size:16px;font-weight:800;margin-top:4px;
+ color:#062012;border-radius:13px;font-size:16px;
 }
-button{cursor:pointer;font-family:inherit}
-button:disabled{opacity:.55;cursor:wait}
+button:disabled{opacity:.6;cursor:wait}
 .suggestions{
  display:none;position:absolute;top:100%;left:0;right:0;
- z-index:20;background:#10251a;border:1px solid #42694e;
- border-radius:12px;margin-top:5px;overflow:hidden;
- box-shadow:0 12px 30px #0009;max-height:260px;overflow-y:auto;
+ z-index:30;margin-top:5px;max-height:250px;overflow-y:auto;
+ background:#10251a;border:1px solid #42694e;border-radius:12px;
+ box-shadow:0 12px 30px #0009;
 }
 .suggestion{
- width:100%;display:block;text-align:left;padding:13px;
- background:transparent;color:#effff3;border:0;
+ display:block;width:100%;padding:13px;text-align:left;
+ background:transparent;color:#effff3;
  border-bottom:1px solid #254332;font-size:13px;
 }
-.suggestion:active,.suggestion:hover{background:#1b422b}
-.suggestion small{display:block;color:#91b5a0;margin-top:4px}
+.suggestion:hover{background:#1b422b}
+.suggestion small{display:block;color:#91b5a0;margin-top:4px;font-weight:400}
 #locationStatus,#result{
- display:none;padding:13px;margin:12px 0 18px;
+ display:none;margin:12px 0 18px;padding:13px;
  border:1px solid #31563d;border-radius:12px;
- background:#10271b;color:#c9f5d5;
- font-size:12px;line-height:1.7;overflow-wrap:anywhere;
+ background:#10271b;color:#bdebc9;font-size:12px;line-height:1.7;
+ overflow-wrap:anywhere;
 }
-.hint{font-size:11px;color:#809c89;margin-top:8px;line-height:1.6}
+.hint{font-size:11px;color:#809c89;margin-top:9px;line-height:1.6}
 .features{
  display:grid;grid-template-columns:repeat(3,1fr);
- gap:13px;margin-top:30px;
+ gap:15px;margin-top:45px;
 }
-.feature{
- background:#0d1e15;border:1px solid #244331;
- border-radius:16px;padding:19px;
-}
-.feature .emoji{font-size:25px}
-.feature h3{font-size:15px;margin:10px 0 6px}
-.feature p{font-size:11px;color:#91aa9a;line-height:1.6}
+.feature{padding:23px;border:1px solid #244331;border-radius:18px;background:#0d1e15}
+.feature .emoji{font-size:26px}
+.feature h3{margin:13px 0 7px;font-size:16px}
+.feature p{font-size:12px;line-height:1.6;color:#91aa9a}
 .notice{
- text-align:center;color:#829b8b;font-size:11px;
- line-height:1.7;margin:24px auto;max-width:700px;
+ margin:25px auto 0;max-width:760px;color:#8da999;
+ font-size:12px;line-height:1.7;text-align:center;
 }
-footer{text-align:center;padding:20px;color:#698575;font-size:11px}
+footer{text-align:center;padding:25px;color:#698575;font-size:12px}
 @media(max-width:600px){
- header{padding:16px 5%}
- .brand h2{font-size:16px}
- main{padding:35px 14px}
- .card{padding:17px}
+ header{padding:17px 5%}
+ main{padding:42px 16px}
+ .search-card{padding:20px}
  .features{grid-template-columns:1fr}
  .status{font-size:10px}
 }
@@ -119,64 +115,64 @@ footer{text-align:center;padding:20px;color:#698575;font-size:11px}
    <small>YOUR JOURNEY. OUR PRIORITY.</small>
   </div>
  </div>
- <div class="status">● TAMIL NADU</div>
+ <div class="status">● Tamil Nadu</div>
 </header>
 
 <main>
- <section class="hero">
-  <div class="tag">✦ SMART BUS JOURNEY PLANNER</div>
-  <h1>Travel Smart.<br><span>Travel Together.</span></h1>
-  <p>Find places and plan your journey across Tamil Nadu.</p>
- </section>
+<section class="hero">
+ <div class="tag">✦ SMART BUS JOURNEY PLANNER</div>
+ <h1>Travel Smart.<br><span>Travel Together.</span></h1>
+ <p>Find your bus journey across Tamil Nadu.</p>
+</section>
 
- <section class="card">
-  <div class="field">
-   <label>📍 FROM - Starting location</label>
-   <input id="from" placeholder="Type city, area or bus stand..."
-    autocomplete="off">
-   <div class="suggestions" id="fromSuggestions"></div>
-  </div>
+<section class="search-card">
 
-  <button class="location-btn" id="gpsButton" onclick="getCurrentLocation()">
-   ◎ Use my current location
-  </button>
+ <div class="field">
+  <label>📍 FROM – Starting location</label>
+  <input id="from" placeholder="Search city, area or bus stand..." autocomplete="off">
+  <div class="suggestions" id="fromSuggestions"></div>
+ </div>
 
-  <div id="locationStatus" role="status"></div>
+ <button class="location-btn" id="locationButton" onclick="getCurrentLocation()">
+  ◎ Use my current location
+ </button>
 
-  <div class="field">
-   <label>🏁 TO - Destination</label>
-   <input id="to" placeholder="Type destination city or area..."
-    autocomplete="off">
-   <div class="suggestions" id="toSuggestions"></div>
-  </div>
+ <div id="locationStatus" role="status"></div>
 
-  <button class="search-btn" onclick="searchBus()">Find My Bus →</button>
-  <div id="result"></div>
-  <p class="hint">Type at least 3 letters. Select a place from the suggestions below the input.</p>
- </section>
+ <div class="field">
+  <label>🏁 TO – Destination</label>
+  <input id="to" placeholder="Search destination city or area..." autocomplete="off">
+  <div class="suggestions" id="toSuggestions"></div>
+ </div>
 
- <section class="features">
-  <div class="feature">
-   <div class="emoji">🗺️</div>
-   <h3>Smart Places</h3>
-   <p>Search cities, towns, areas and transport locations.</p>
-  </div>
-  <div class="feature">
-   <div class="emoji">🕒</div>
-   <h3>Bus Timings</h3>
-   <p>Verified bus schedules will be added when data is available.</p>
-  </div>
-  <div class="feature">
-   <div class="emoji">📡</div>
-   <h3>Live Tracking</h3>
-   <p>Live bus GPS requires authorised operator data.</p>
-  </div>
- </section>
+ <button class="search-btn" onclick="searchBus()">Find My Bus →</button>
+ <div id="result"></div>
 
- <p class="notice">
-  Place suggestions use OpenStreetMap-based search services.
-  Routes, verified bus timings and live bus tracking are not connected yet.
- </p>
+ <p class="hint">Type at least 3 letters and select the correct place from the suggestions.</p>
+</section>
+
+<section class="features">
+ <div class="feature">
+  <div class="emoji">🗺️</div>
+  <h3>Smart Routes</h3>
+  <p>Find possible routes between your starting point and destination.</p>
+ </div>
+ <div class="feature">
+  <div class="emoji">🕒</div>
+  <h3>Bus Timings</h3>
+  <p>Verified bus schedules will be added when route data is available.</p>
+ </div>
+ <div class="feature">
+  <div class="emoji">📡</div>
+  <h3>Live Tracking</h3>
+  <p>Live bus GPS requires authorised operator data.</p>
+ </div>
+</section>
+
+<p class="notice">
+ Namma Bus TN is an independent project. Bus routes, verified timings and live GPS
+ information are not yet connected.
+</p>
 </main>
 
 <footer>© 2026 NAMMA BUS TN · Made for Tamil Nadu ❤️</footer>
@@ -184,25 +180,65 @@ footer{text-align:center;padding:20px;color:#698575;font-size:11px}
 <script>
 const fromInput = document.getElementById("from");
 const toInput = document.getElementById("to");
-const gpsButton = document.getElementById("gpsButton");
 const locationStatus = document.getElementById("locationStatus");
+const locationButton = document.getElementById("locationButton");
 const result = document.getElementById("result");
 
+let searchTimers = {};
+let gpsWatch = null;
+let gpsTimer = null;
+let bestGPS = null;
+let gpsFinished = false;
 let selectedFrom = null;
 let selectedTo = null;
-let debounceTimers = {};
 
+// Tamil Nadu approximate bounding area
+const TN_BOUNDS = "76.2,8.0,80.4,13.6";
+
+// Show status
 function showStatus(message){
  locationStatus.style.display = "block";
  locationStatus.textContent = message;
 }
 
-function setupAutocomplete(input, box, key){
- input.addEventListener("input", function(){
+// Place search filtering
+function isUsefulPlace(p){
+ const key = (p.osm_key || "").toLowerCase();
+ const value = (p.osm_value || "").toLowerCase();
+ const type = (p.type || "").toLowerCase();
+
+ const allowed = [
+  "city","town","village","suburb","neighbourhood",
+  "quarter","hamlet","locality","municipality",
+  "bus_station","station","railway_station",
+  "bus_stop","commercial","residential"
+ ];
+
+ const rejected = [
+  "administrative","boundary","ward","district",
+  "county","state","postcode","house","street",
+  "county"
+ ];
+
+ if(rejected.includes(value)) return false;
+ if(rejected.includes(type)) return false;
+
+ if(key === "place" && allowed.includes(value)) return true;
+ if(key === "amenity" && value === "bus_station") return true;
+ if(key === "railway" && ["station","halt"].includes(value)) return true;
+ if(key === "public_transport" && ["station","stop_position"].includes(value)) return true;
+
+ return false;
+}
+
+// Autocomplete
+function setupSearch(input, box, key){
+ input.addEventListener("input",function(){
   if(key === "from") selectedFrom = null;
   else selectedTo = null;
 
-  clearTimeout(debounceTimers[key]);
+  clearTimeout(searchTimers[key]);
+
   const query = input.value.trim();
 
   if(query.length < 3){
@@ -213,52 +249,55 @@ function setupAutocomplete(input, box, key){
   box.innerHTML = '<div class="suggestion">Searching Tamil Nadu places...</div>';
   box.style.display = "block";
 
-  debounceTimers[key] = setTimeout(function(){
-   findPlaces(query, input, box, key);
-  }, 650);
+  searchTimers[key] = setTimeout(function(){
+   searchPlaces(query,input,box,key);
+  },450);
  });
 
- input.addEventListener("keydown", function(event){
-  if(event.key === "Escape") box.style.display = "none";
+ input.addEventListener("keydown",function(e){
+  if(e.key === "Escape") box.style.display = "none";
  });
 }
 
-async function findPlaces(query, input, box, key){
+async function searchPlaces(query,input,box,key){
  try{
   const url = "https://photon.komoot.io/api/?q=" +
-   encodeURIComponent(query + ", Tamil Nadu, India") +
-   "&limit=8";
+   encodeURIComponent(query) +
+   "&limit=30&lang=en&bbox=" + TN_BOUNDS;
 
   const response = await fetch(url);
-  if(!response.ok) throw new Error("Search unavailable");
+  if(!response.ok) throw new Error("Search service unavailable");
 
   const data = await response.json();
 
-  const places = (data.features || []).filter(function(item){
+  const matches = (data.features || []).filter(function(item){
    const p = item.properties || {};
    const state = (p.state || "").toLowerCase();
    const country = (p.country || "").toLowerCase();
 
-   return (
-    (state.includes("tamil nadu") || p.city || p.name) &&
-    (!country || country.includes("india"))
-   );
-  });
+   if(state && !state.includes("tamil nadu")) return false;
+   if(country && !country.includes("india")) return false;
+
+   return isUsefulPlace(p);
+  }).slice(0,8);
 
   box.innerHTML = "";
 
-  if(!places.length){
-   box.innerHTML = '<div class="suggestion">No matching place found. Try another spelling.</div>';
+  if(matches.length === 0){
+   box.innerHTML = '<div class="suggestion">No matching city or area found. Try another spelling.</div>';
    box.style.display = "block";
    return;
   }
 
-  places.forEach(function(item){
+  matches.forEach(function(item){
    const p = item.properties || {};
-   const name = p.name || p.city || p.district || "Place";
+   const name = p.name || p.city || "Place";
+
    const details = [
-    p.suburb, p.district, p.city, p.state
-   ].filter(function(v,i,a){return v && a.indexOf(v) === i;}).join(", ");
+    p.suburb,p.district,p.city,p.state
+   ].filter(function(v,i,a){
+    return v && a.indexOf(v) === i && v !== name;
+   }).join(", ");
 
    const button = document.createElement("button");
    button.type = "button";
@@ -273,13 +312,14 @@ async function findPlaces(query, input, box, key){
    button.appendChild(title);
    button.appendChild(small);
 
-   button.addEventListener("click", function(){
-    input.value = [name, details].filter(Boolean).join(", ");
+   button.addEventListener("click",function(){
+    const fullName = [name,details].filter(Boolean).join(", ");
+    input.value = fullName;
 
     const chosen = {
-     name: input.value,
-     lat: item.geometry.coordinates[1],
-     lon: item.geometry.coordinates[0]
+     name:fullName,
+     lat:item.geometry.coordinates[1],
+     lon:item.geometry.coordinates[0]
     };
 
     if(key === "from") selectedFrom = chosen;
@@ -294,29 +334,30 @@ async function findPlaces(query, input, box, key){
   box.style.display = "block";
 
  }catch(error){
-  box.innerHTML = '<div class="suggestion">Place search temporarily unavailable. Check internet or enter location manually.</div>';
+  box.innerHTML = '<div class="suggestion">Search service unavailable. Check internet or enter the location manually.</div>';
   box.style.display = "block";
  }
 }
 
-setupAutocomplete(fromInput, document.getElementById("fromSuggestions"), "from");
-setupAutocomplete(toInput, document.getElementById("toSuggestions"), "to");
+setupSearch(fromInput,document.getElementById("fromSuggestions"),"from");
+setupSearch(toInput,document.getElementById("toSuggestions"),"to");
 
-document.addEventListener("click", function(event){
- if(!event.target.closest(".field")){
+document.addEventListener("click",function(e){
+ if(!e.target.closest(".field")){
   document.querySelectorAll(".suggestions").forEach(function(box){
    box.style.display = "none";
   });
  }
 });
 
-async function reverseGeocode(lat, lon){
+// Reverse geocoding
+async function getAreaName(lat,lon){
  const url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" +
-  encodeURIComponent(lat) + "&lon=" + encodeURIComponent(lon) +
-  "&zoom=18&addressdetails=1";
+  encodeURIComponent(lat) + "&lon=" +
+  encodeURIComponent(lon) + "&zoom=18&addressdetails=1";
 
  const response = await fetch(url);
- if(!response.ok) throw new Error("Address lookup failed");
+ if(!response.ok) throw new Error("Address lookup unavailable");
 
  const data = await response.json();
  const a = data.address || {};
@@ -325,122 +366,151 @@ async function reverseGeocode(lat, lon){
   a.residential || a.hamlet || a.village || a.town ||
   a.city_district || a.city || a.county;
 
- if(!area) throw new Error("Area name not found");
+ if(!area) throw new Error("Area not found");
 
  const city = a.city || a.town || a.municipality ||
   a.city_district || a.county;
 
- return [...new Set([area, city])].filter(Boolean).join(", ");
+ return [...new Set([area,city])].filter(Boolean).join(", ");
 }
 
+// Fast GPS + fresh GPS
 function getCurrentLocation(){
  if(!navigator.geolocation){
-  showStatus("GPS is not supported. Please search your location manually.");
+  showStatus("GPS not supported. Search your location manually.");
   return;
  }
 
- gpsButton.disabled = true;
- gpsButton.textContent = "◎ Finding your location...";
- showStatus("Getting GPS readings. Please wait. Keep your phone outdoors if possible.");
+ if(gpsWatch !== null) navigator.geolocation.clearWatch(gpsWatch);
+ clearTimeout(gpsTimer);
 
- let bestPosition = null;
- let finished = false;
- let watchId = null;
- let timeoutId = null;
+ gpsFinished = false;
+ bestGPS = null;
+ locationButton.disabled = true;
+ locationButton.textContent = "◎ Finding location...";
 
- function finish(){
-  if(finished) return;
-  finished = true;
+ showStatus("Checking recent location first...");
 
-  if(watchId !== null) navigator.geolocation.clearWatch(watchId);
-  clearTimeout(timeoutId);
-
-  if(!bestPosition){
-   gpsButton.disabled = false;
-   gpsButton.textContent = "◎ Use my current location";
-   showStatus("GPS could not find your location. Please use the From search suggestions.");
-   return;
+ // First request: quick cached reading if browser has one
+ navigator.geolocation.getCurrentPosition(
+  function(position){
+   if(gpsFinished) return;
+   useGPSPosition(position,"Recent GPS reading");
+  },
+  function(){},
+  {
+   enableHighAccuracy:false,
+   maximumAge:120000,
+   timeout:2000
   }
+ );
 
-  usePosition(bestPosition);
- }
+ // Second request: fresh GPS reading
+ gpsWatch = navigator.geolocation.watchPosition(
+  function(position){
+   if(gpsFinished) return;
 
- function onPosition(position){
-  if(finished) return;
+   const accuracy = position.coords.accuracy;
 
-  if(!bestPosition ||
-     position.coords.accuracy < bestPosition.coords.accuracy){
-   bestPosition = position;
-  }
-
-  const accuracy = Math.round(bestPosition.coords.accuracy);
-
-  showStatus("GPS reading received. Best accuracy so far: about " +
-   accuracy + " metres. Improving location...");
-
-  if(accuracy <= 100) finish();
- }
-
- function onError(error){
-  if(error.code === 1){
-   finished = true;
-   if(watchId !== null) navigator.geolocation.clearWatch(watchId);
-   clearTimeout(timeoutId);
-   gpsButton.disabled = false;
-   gpsButton.textContent = "◎ Use my current location";
-   showStatus("Location permission denied. Allow precise location for Chrome in Android settings.");
-  }
- }
-
- try{
-  watchId = navigator.geolocation.watchPosition(
-   onPosition,
-   onError,
-   {
-    enableHighAccuracy:true,
-    maximumAge:0,
-    timeout:35000
+   if(!bestGPS || accuracy < bestGPS.coords.accuracy){
+    bestGPS = position;
    }
-  );
 
-  timeoutId = setTimeout(finish, 25000);
+   const metres = Math.round(accuracy);
 
- }catch(error){
-  gpsButton.disabled = false;
-  gpsButton.textContent = "◎ Use my current location";
-  showStatus("Unable to start GPS. Please search your location manually.");
- }
+   showStatus(
+    "GPS signal received. Current accuracy: about " +
+    metres + " metres. Improving location..."
+   );
+
+   // Good reading: finish early
+   if(accuracy <= 100){
+    finishGPS(bestGPS,"Fresh GPS location");
+   }
+  },
+  function(error){
+   if(error.code === 1){
+    gpsFinished = true;
+    stopGPS();
+    locationButton.disabled = false;
+    locationButton.textContent = "◎ Use my current location";
+    showStatus("Location permission denied. Allow precise location for Chrome in Android settings.");
+   }
+  },
+  {
+   enableHighAccuracy:true,
+   maximumAge:0,
+   timeout:15000
+  }
+ );
+
+ // Maximum wait for fresh GPS
+ gpsTimer = setTimeout(function(){
+  if(bestGPS){
+   finishGPS(bestGPS,"Best available GPS reading");
+  }else{
+   gpsFinished = true;
+   stopGPS();
+   locationButton.disabled = false;
+   locationButton.textContent = "◎ Use my current location";
+   showStatus("GPS is taking too long. Please search your area manually.");
+  }
+ },12000);
 }
 
-async function usePosition(position){
- const accuracy = Math.round(position.coords.accuracy);
+function stopGPS(){
+ if(gpsWatch !== null){
+  navigator.geolocation.clearWatch(gpsWatch);
+  gpsWatch = null;
+ }
+ clearTimeout(gpsTimer);
+}
+
+function useGPSPosition(position,label){
+ if(gpsFinished) return;
+ finishGPS(position,label);
+}
+
+async function finishGPS(position,label){
+ if(gpsFinished) return;
+ gpsFinished = true;
+ stopGPS();
+
  const lat = position.coords.latitude;
  const lon = position.coords.longitude;
+ const accuracy = Math.round(position.coords.accuracy);
 
- let label = "Rough GPS location";
- if(accuracy <= 100) label = "Good GPS accuracy";
- else if(accuracy <= 500) label = "Approximate GPS accuracy";
-
- showStatus("GPS found. Accuracy: approximately " + accuracy +
-  " metres. Finding your area name...");
+ showStatus(
+  label + " received. Accuracy: approximately " +
+  accuracy + " metres. Finding area name..."
+ );
 
  try{
-  const area = await reverseGeocode(lat, lon);
+  const area = await getAreaName(lat,lon);
   fromInput.value = area;
   selectedFrom = {name:area,lat:lat,lon:lon};
 
-  showStatus("✓ Current location: " + area +
-   " | " + label + " | " + accuracy + " metres");
+  let quality = "Rough";
+  if(accuracy <= 100) quality = "Good";
+  else if(accuracy <= 500) quality = "Approximate";
+
+  showStatus(
+   "✓ Location: " + area +
+   " | " + quality + " accuracy: " + accuracy + " metres."
+  );
 
  }catch(error){
-  showStatus("GPS found (" + accuracy +
-   " metres), but area name lookup failed. Please select your area using From search.");
+  showStatus(
+   "GPS received (" + accuracy +
+   " metres), but area name lookup failed. Please search your area manually."
+  );
  }finally{
-  gpsButton.disabled = false;
-  gpsButton.textContent = "◎ Use my current location";
+  locationButton.disabled = false;
+  locationButton.textContent = "◎ Use my current location";
  }
 }
 
+// Safe text output
 function searchBus(){
  const from = fromInput.value.trim();
  const to = toInput.value.trim();
@@ -452,9 +522,9 @@ function searchBus(){
 
  result.style.display = "block";
  result.textContent =
-  "🚌 Journey search\nFrom: " + from +
-  "\nTo: " + to +
-  "\n\nYour places have been entered. Verified bus routes and timings are not connected yet. They will be added after route data is collected.";
+  "🚌 Your Journey | From: " + from +
+  " | To: " + to +
+  ". Verified bus route and timing database is not connected yet.";
 }
 </script>
 </body>
